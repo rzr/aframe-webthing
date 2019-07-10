@@ -11,7 +11,7 @@
     <meta charset="utf-8"/>
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
     <script type="text/javascript" src="aframe-webthing.js"></script>
-    <script type="text/javascript" src="level.js"></script>
+    <script type="text/javascript" src="properties.js"></script>
     <script>
       window.onload = function() {
         // TODO: relocate this elsewhere
@@ -33,7 +33,8 @@
       <a-sphere id="level"
                 color="#FF0000"
                 position="0 0 -5"
-                webthing="verbose: yes, target: 'level' "
+                webthing="verbose: 'yes'"
+                properties
                 ></a-sphere>
     </a-scene>
   </body>
