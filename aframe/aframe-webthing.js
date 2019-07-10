@@ -15,7 +15,7 @@ AFRAME.registerComponent('webthing', {
     url: { type: 'string', default: 'http://localhost:8888' },
     wsUrl: { type: 'string', default: 'ws://localhost:8888' },
     bearer: { type: 'string', default: '' },
-    target: { type: 'string', default: 'level'},
+    properties: { type: 'string', default: 'properties'},
     pause: { type: "string", default: 'no' },
     useWs: { type: "string", default: 'yes' },
     refresh: {type: "string", default: "1000" },
@@ -36,10 +36,9 @@ AFRAME.registerComponent('webthing', {
     {
       verbose('aframe-webthing.update: ');
       document.title = JSON.stringify(properties);
-      let element = document.getElementById(that.data.target);
-      if (element) {
+      if (that.data.properties && that.data.properties.length) {
         for (var property of Object.keys(properties)) {
-          element.setAttribute(that.data.target, property, properties[property]);
+          that.el.setAttribute(that.data.properties, property, properties[property]);
         }
       }
     }
@@ -136,10 +135,10 @@ AFRAME.registerComponent('webthing', {
     }
 
     //TODO: Overloading from Local storage (to relocate elsewhere)
-    let el = document.getElementById(that.data.target);
+    let el = document.getElementById(that.data.properties);
     for (let key of Object.keys(localStorage)) {
       if (that.data[key] != undefined) {
-        el.setAttribute('webthing', key, localStorage[key]);
+        that.el.setAttribute('webthing', key, localStorage[key]);
       }
     }
     verbose('log: Starting');
