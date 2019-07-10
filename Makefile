@@ -15,11 +15,9 @@ default: help
 project?=webthing-aframe
 runtime?=node
 example_file=index.js
-run_args?=
+view_url?=http://localhost:8880?verbose=yes&useWs=no
+browser?=x-www-browser
 port?=8880
-target_url?=http://localhost:${port}
-export target_url
-
 
 %: ${runtime}/%
 	@echo "log: $@: $^"
@@ -41,3 +39,12 @@ node_modules:
 
 start: ${runtime}/start
 	@echo "# $@: $^"
+
+demo:
+	xterm -e make -C example/webthing-node start &
+	@sleep 1
+	xterm -e make -C example/webthing-node demo &
+	@sleep 1
+	xterm -e make start &
+	@sleep 1
+	${browser} "${view_url}"
