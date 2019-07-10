@@ -18,10 +18,15 @@
   "keywords": [
     "aframe",
     "aframe-component",
-    "motor",
-    "robot",
-    "robotic",
-    "servo"
+    "digital-twin",
+    "moziot",
+    "virtual-reality",
+    "vr",
+    "webthing",
+    "webthings",
+    "webvr",
+    "webxr",
+    "xr"
   ],
   "bugs": {
     "url": "https://github.com/rzr/aframe-webthing/issues"
