@@ -10,8 +10,8 @@ make -C example/webthing-iotjs start
 #| http://localhost:8888
 
 make -C example/webthing-iotjs demo
-#| curl -H "Accept: application/json" -H "Content-type: application/json"  http://localhost:8888/properties/level
-#| {"level":100}
+#| curl http://localhost:8888/properties
+#| {"on":true, "level":42}
 
 make start
 #| PORT=8880 node index.js
