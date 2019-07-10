@@ -1,66 +1,47 @@
-// -*- mode: js; js-indent-level:2;  -*-
-// SPDX-License-Identifier: MPL-2.0
+var webthing;
 
-/**
- *
- * Copyright 2019-present Samsung Electronics France SAS, and other contributors
- *
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/#
- */
-var console = require('console'); // Disable logs here by editing to '!console.log'
-var log = console.log || function () {};
-var verbose = console.log || function () {};
-var webthing = require('webthing-iotjs');
-
-
-function LevelProperty(thing, name, value, metadata, config) {
-  var that = this;
-  this.config = config || {};
-  webthing.Property.call(this, thing,
-                         name || "Level",
-                         new webthing.Value(Number(value)), {
-                           title: metadata && metadata.title || "Level: ".concat(name),
-                           type: 'number',
-                           minimum: this.config.minimum || 0,
-                           maximum: this.config.maximum || 100,
-                           description: metadata && metadata.description || "Level"
-                         });
-  {
-    this.config = config;
-    that.value.valueForwarder = function (value) {
-      verbose('forward: ' + value);
-    };
-  }
+try {
+  webthing = require('../webthing');
+} catch (err) {
+  webthing = require('webthing-iotjs');
 }
 
-function LevelThing(name, type, description) {
-  var that = this;
-  webthing.Thing.call(this,
-                      name || 'Level',
-                      type || [],
-                      description || 'A web connected Level');
-  {
-    this.addProperty(new LevelProperty(this, 'level', 100, {
-      description: 'Level'
-    }));
-  }
+var Property = webthing.Property;
+var SingleThing = webthing.SingleThing;
+var Thing = webthing.Thing;
+var Value = webthing.Value;
+var WebThingServer = webthing.WebThingServer;
+
+function makeThing() {
+  var thing = new Thing('My Lamp', ['OnOffSwitch', 'Light'], 'A web connected lamp');
+  thing.addProperty(new Property(thing, 'on', new Value(true), {
+    '@type': 'OnOffProperty',
+    title: 'On/Off',
+    type: 'boolean',
+    description: 'Whether the lamp is turned on'
+  }));
+  thing.addProperty(new Property(thing, 'level', new Value(50), {
+    '@type': 'BrightnessProperty',
+    title: 'level',
+    type: 'integer',
+    description: 'The level of light from 0-100',
+    minimum: 0,
+    maximum: 100,
+    unit: 'percent'
+  }));
+  return thing;
 }
 
+function runServer() {
+  var thing = makeThing(); // If adding more than one thing, use MultipleThings() with a name.
+  // In the single thing case, the thing's name will be broadcast.
 
-function App() {
-  var that = this;
-  this.port = process.argv[3] ? Number(process.argv[3]) : 8888;
-  this.url = "http://localhost:".concat(this.port);
-  this.server = new webthing.WebThingServer(new webthing.SingleThing(new LevelThing()), this.port);
+  var server = new WebThingServer(new SingleThing(thing), 8888);
   process.on('SIGINT', function () {
-    that.server.stop();
+    server.stop();
+    process.exit();
   });
-  console.log(this.url);
-  this.server.start();
+  server.start();
 }
 
-if (module.parent === null) {
-  App()
-}
+runServer();
