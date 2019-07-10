@@ -22,7 +22,7 @@ AFRAME.registerComponent('level', {
     for (var property of Object.keys(properties)) {
       switch(property) {
       case "level":
-        this.level = properties[property] / 100;
+        this.level = (properties[property] / 100 / 2) + .5 ;
         break;
       }
       var el = document.getElementById(property);
