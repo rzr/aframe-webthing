@@ -7,19 +7,12 @@
      file, You can obtain one at http://mozilla.org/MPL/2.0/
   -->
 <html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
-  </head>
-  <body>
-    <a-scene>
-      <a-sphere id="level"
-                color="#FFFF00"
-                position="0 0 -5"
-                ></a-sphere>
-    </a-scene>
-  <script type="text/javascript"
-          src="https://cdn.jsdelivr.net/gh/rzr/twins@v0.0.2/aframe/controller.js"></script>
-  <script type="text/javascript" src="aframe.js"></script>
-  </body>
+  <script type="text/javascript">
+    var url = new URL(window.location);
+    url.href = url.href.replace('/index.html', '/aframe/index.html');
+    url.href = url.href.replace('/?', '/aframe/?');
+    url.href = url.href.replace('/$', '/aframe/');
+    url.href = url.href.replace('$', '/aframe/');
+    window.location.replace(url);
+  </script>
 </html>
