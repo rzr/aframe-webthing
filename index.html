@@ -9,10 +9,10 @@
 <html lang="en">
   <script type="text/javascript">
     var url = new URL(window.location);
+    console.log(url.href);
     url.href = url.href.replace('/index.html', '/example/aframe/index.html');
     url.href = url.href.replace('/?', '/example/aframe/?');
-    url.href = url.href.replace('/$', '/example/aframe/');
-    url.href = url.href.replace('$', '/example/aframe/');
+    url.href = url.href.replace(/\/$/, '/example/aframe/');
     window.location.replace(url);
   </script>
 </html>
