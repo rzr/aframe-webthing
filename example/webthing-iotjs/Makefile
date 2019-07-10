@@ -15,7 +15,8 @@ default: help
 project?=aframe-webthing-iotjs-example
 runtime?=node
 webthing_url?=http://${project}.glitch.me
-example_file=index.js
+example_file=iotjs_modules/webthing-iotjs/example/single-thing.js
+property?=level
 run_args?=
 port?=8888
 target_url?=http://localhost:${port}
@@ -59,6 +60,9 @@ iotjs/start: ${example_file} ${iotjs_modules_dirs}
 iotjs/modules: ${iotjs_modules_dirs}
 	ls $<
 
+${example_file}: ${iotjs_modules_dirs}
+	ls $@
+
 iotjs/client:
 	curl -i ${target_url}
 	curl -i ${target_url}/properties
@@ -101,4 +105,4 @@ property/%:
 	sleep ${sleep_secs}
 
 demo:
-	for i in $$(seq 0 100) ; do ${MAKE} property/level value=$${i} ; sleep 1 ; done
+	for i in $$(seq 0 100) ; do ${MAKE} property/${property} value=$${i} ; sleep 1 ; done
