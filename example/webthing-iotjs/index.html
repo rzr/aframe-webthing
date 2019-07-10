@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<!-- SPDX-License-Identifier: MPL-2.0 -->
+<!-- 
+     Copyright 2018-present Samsung Electronics France SAS, and other contributors
+     This Source Code Form is subject to the terms of the Mozilla Public
+     License, v. 2.0. If a copy of the MPL was not distributed with this
+     file, You can obtain one at http://mozilla.org/MPL/2.0/
+  -->
+<html lang="en">
+  <script type="text/javascript">
+    var url = new URL(window.location);
+    url.href = url.href.replace('/index.html', '/aframe/index.html');
+    url.href = url.href.replace('/?', '/aframe/?');
+    url.href = url.href.replace('/$', '/aframe/');
+    url.href = url.href.replace('$', '/aframe/');
+    window.location.replace(url);
+  </script>
+</html>

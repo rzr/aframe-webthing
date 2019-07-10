@@ -1,0 +1,23 @@
+{
+  "name": "webthing-example",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "example": "node example",
+    "lint": "eslint --fix . || eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Philippe Coval <p.coval@samsung.com> (https://www.npmjs.com/~rzr)",
+  "license": "MPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rzr/webthing-example.git"
+  },
+  "dependencies": {
+    "eslint": "^6.0.1",
+    "express": "^4.17.1",
+    "webthing-iotjs": "^0.11.0"
+  }
+}

@@ -1,23 +1,35 @@
 {
-  "name": "webthing-example",
-  "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "aframe-webthing",
+  "version": "0.0.2",
+  "description": "Robot model rendered by A-Frame",
+  "main": "example.js",
   "scripts": {
-    "start": "node index",
-    "example": "node example",
     "lint": "eslint --fix . || eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node example.js"
   },
   "author": "Philippe Coval <p.coval@samsung.com> (https://www.npmjs.com/~rzr)",
   "license": "MPL-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rzr/webthing-example.git"
+    "url": "git+https://github.com/rzr/twins.git"
   },
+  "iotjs": {
+    "version": ">=1.0"
+  },
+  "keywords": [
+    "aframe",
+    "aframe-component",
+    "motor",
+    "robot",
+    "robotic",
+    "servo"
+  ],
+  "bugs": {
+    "url": "https://github.com/rzr/twins/issues"
+  },
+  "homepage": "https://libraries.io/npm/twins",
   "dependencies": {
     "eslint": "^6.0.1",
-    "express": "^4.17.1",
-    "webthing-iotjs": "^0.11.0"
+    "express": "^4.17.1"
   }
 }
