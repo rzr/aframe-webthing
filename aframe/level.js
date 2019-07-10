@@ -13,12 +13,13 @@ AFRAME.registerComponent('level', {
   schema: {
     level: { type: 'number', default: 0},
   },
-  init: function() {},
+  init: function() {
+  },
 
   update: function(old) {
+    console.log('log: level.update');
     var properties = this.data;
     for (var property of Object.keys(properties)) {
-      var rotation = [ 0, 0, 0];
       switch(property) {
       case "level":
         this.level = properties[property] / 100;
