@@ -1,5 +1,5 @@
 {
-  "name": "aframe-webthing",
+  "name": "aframe-webthing-example",
   "version": "0.0.2",
   "description": "Robot model rendered by A-Frame",
   "main": "example.js",
