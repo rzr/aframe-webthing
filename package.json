@@ -5,7 +5,7 @@
   "main": "example.js",
   "scripts": {
     "lint": "eslint --fix . || eslint .",
-    "start": "node example.js"
+    "start": "node example"
   },
   "author": "Philippe Coval <p.coval@samsung.com> (https://www.npmjs.com/~rzr)",
   "license": "MPL-2.0",
