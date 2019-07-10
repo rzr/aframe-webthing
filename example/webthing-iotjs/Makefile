@@ -67,7 +67,7 @@ iotjs/client/web:
 	curl -i ${webthing_url}
 	curl -i ${webthing_url}/properties
 
-node_module: package.json
+node_modules: package.json
 	npm install
 
 node/start: ${example_file} node_modules
