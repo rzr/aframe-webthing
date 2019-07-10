@@ -20,13 +20,14 @@ AFRAME.registerComponent('properties', {
     for (var property of Object.keys(properties)) {
       switch(property) {
       case "level":
-        this.data[property] = (properties[property] / 100 / .5) + .5 ;
+        this.data[property] = (properties[property]/100/.5)+.5 ;
         break;
       default:
         break;
       }
-      this.el.object3D.scale.setScalar(this.data.level);
-      this.el.setAttribute('color', this.data.on ? 'green' : 'red');
     }
+    this.el.object3D.scale.setScalar(this.data.level);
+    this.el.setAttribute('color',
+                         this.data.on ? 'green' : 'red');
   }
 });
