@@ -18,6 +18,9 @@ make start
 #| Your app is listening on port 8880
 
 x-www-browser http://localhost:8880?verbose=yes&useWs=no
+
+# Or you could use a public server (on http):
+x-www-browser 'http://rzr.github.io/aframe-webthing?useWs=no&verbose=yes' 
 ```
 
 ## RESOURCES: ##
