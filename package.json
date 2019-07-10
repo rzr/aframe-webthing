@@ -1,0 +1,33 @@
+{
+  "name": "aframe-webthing",
+  "version": "0.0.0",
+  "description": "Bind webthings to XR",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Philippe Coval <p.coval@samsung.com> (https://www.npmjs.com/~rzr)",
+  "license": "MPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rzr/aframe-webthing.git"
+  },
+  "iotjs": {
+    "version": ">=1.0"
+  },
+  "keywords": [
+    "aframe",
+    "aframe-component",
+    "motor",
+    "robot",
+    "robotic",
+    "servo"
+  ],
+  "bugs": {
+    "url": "https://github.com/rzr/aframe-webthing/issues"
+  },
+  "homepage": "https://libraries.io/npm/aframe-webthing",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
