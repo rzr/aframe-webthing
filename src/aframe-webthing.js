@@ -20,6 +20,7 @@ AFRAME.registerComponent('webthing', {
     useWs: { type: "string", default: 'yes' },
     refresh: {type: "string", default: "1000" },
     verbose: {type: "string", default: "no" },
+    persist: {type: "string", default: "yes" },
     settings: {type: "string", default: ""}
   },
   init: function() {
@@ -81,7 +82,7 @@ AFRAME.registerComponent('webthing', {
       that.interval = setInterval(() => {
         if (that.data.pause === 'yes') {
           verbose(`log: stopping: ${that.data.pause}`);
-          that.inverval = clearInterval(that.interval);
+          toggle(false);
         }
         query();
       }, Number(delay));
@@ -89,6 +90,7 @@ AFRAME.registerComponent('webthing', {
 
     function start()
     {
+      query();
       let useWebsockets = ("WebSocket" in window) && (that.data.useWs === 'yes');
       if (useWebsockets) {
         let wsUrl = that.data.wsUrl;
@@ -114,7 +116,6 @@ AFRAME.registerComponent('webthing', {
         if (that.ws) {
           that.ws.close();
         }
-        query();
         poll();
       }
     }
@@ -130,15 +131,33 @@ AFRAME.registerComponent('webthing', {
         }
         if (that.interval) {
           clearInterval(that.interval);
+          that.interval = null;
         }
       }
     }
-
+  
     //TODO: Overloading from Local storage (to relocate elsewhere)
-    let el = document.getElementById(that.data.properties);
-    for (let key of Object.keys(localStorage)) {
-      if (that.data[key] != undefined) {
-        that.el.setAttribute('webthing', key, localStorage[key]);
+    if (document.location.search) {
+      let searchParams = null;
+      searchParams = (new URL(document.location)).searchParams;
+      if (searchParams) {
+        for (let entry of searchParams.entries()) {
+          that.data[entry[0]] = entry[1];
+        }
+      }
+      if (that.data['persist'] === 'yes') {
+        for (let entry of searchParams.entries()) {
+          localStorage[entry[0]] = entry[1];
+        }
+      }
+      window.history.pushState(null, null, window.location.pathname);
+    }               
+    if (that.data['persist'] === 'yes') {
+      let el = document.getElementById(that.data.properties);
+      for (let key of Object.keys(localStorage)) {
+        if (that.data[key] != undefined) {
+          that.el.setAttribute('webthing', key, localStorage[key]);
+        }
       }
     }
     verbose('log: Starting');
