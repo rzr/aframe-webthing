@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- SPDX-License-Identifier: MPL-2.0 -->
+<!--
+    Copyright 2018-present Samsung Electronics France SAS, and other contributors
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/
+  -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script type="text/javascript" src="aframe-webthing.js"></script>
+    <script type="text/javascript" src="level.js"></script>
+    <script>
+      window.onload = function() {
+        // TODO: relocate this elsewhere
+        if (document.location.search) {
+          let searchParams = null;
+          searchParams = (new URL(document.location)).searchParams;
+          if (searchParams) {
+            for (let entry of searchParams.entries()) {
+              localStorage[entry[0]] = entry[1];
+            }
+          }
+          window.location.replace('index.html');
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <a-scene>
+      <a-sphere id="level"
+                color="#FF0000"
+                position="0 0 -5"
+                webthing="verbose: yes, target: 'level' "
+                ></a-sphere>
+    </a-scene>
+  </body>
+</html>
