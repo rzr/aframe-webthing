@@ -12,21 +12,21 @@
 AFRAME.registerComponent('properties', {
   schema: {
     level: { type: 'number', default: 0},
+    on: { type: 'boolean', value: true}
   },
 
   update: function(old) {
-    console.log('log: level.update');
     var properties = this.data;
     for (var property of Object.keys(properties)) {
       switch(property) {
       case "level":
-        this.level = (properties[property] / 100 / 4) + .25 ;
+        this.data[property] = (properties[property] / 100 / .5) + .5 ;
         break;
+      default:
+        this.data[property] = properties[property];
       }
-      var el = document.getElementById(property);
-      if (!el || !el.object3D)
-        throw "Null: " + property;
-      el.object3D.scale.set(this.level, this.level, this.level);
+      this.el.object3D.scale.setScalar(this.data.level);
+      this.el.setAttribute('color', this.data.on ? 'green' : 'red');
     }
   }
 });
