@@ -1,6 +1,6 @@
 {
   "name": "aframe-webthing",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Bind webthings to XR",
   "main": "index.js",
   "scripts": {
