@@ -17,9 +17,10 @@ AFRAME.registerComponent('webthing', {
     bearer: { type: 'string', default: '' },
     target: { type: 'string', default: 'level'},
     pause: { type: "string", default: 'no' },
-    useWs: { type: "string", default: 'no' },
+    useWs: { type: "string", default: 'yes' },
     refresh: {type: "string", default: "1000" },
-    verbose: {type: "string", default: "yes" }
+    verbose: {type: "string", default: "no" },
+    settings: {type: "string", default: ""}
   },
   init: function() {
     var that = this;
@@ -67,9 +68,8 @@ AFRAME.registerComponent('webthing', {
         })
         .catch((err) => {
           console.error(err);
-          if (false && confirm('Error: Connection issue, Please update settings')) {
-            window.location.href = 'settings.html';
-          }
+          if (that.data.settings && that.data.settings.length)
+            window.location.href =  that.data.settings;
         });
     }
 
@@ -150,5 +150,3 @@ AFRAME.registerComponent('webthing', {
     console.log('controler.update');
   }
 });
-
-
