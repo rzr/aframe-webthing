@@ -31,21 +31,31 @@ curl?=curl \
  ${curl_args}
 
 sleep_secs?=1
+NODE_PATH?=${CURDIR}/node_modules/webthing/node_modules
+export NODE_PATH
 
 
 %: ${runtime}/%
 	@echo "log: $@: $^"
 
+modules_dir?=${CURDIR}/node_modules
 
 help:
 	@echo "# Usage:"
 	@echo "# make runtime=${runtime} start"
 
+node_modules/%: node_modules
+	ls $@
+
 node_modules: package.json
 	npm install
+	npm --prefix=$@/webthing install --only=dev
 
 ${example_file}: node_modules
 	ls $@
+
+${example_file}: node_modules/webthing/example/single-thing.js
+	sed 's|brightness|level|g' < $< > $@
 
 node/start: ${example_file} node_modules
 	node $<
@@ -57,6 +67,8 @@ property/%:
 	${curl} ${target_url}/properties/${@F}
 	@echo ""
 	${curl} -X PUT -d '{ "${@F}": ${value} }' ${target_url}/properties/${@F}
+	@echo ""
+	${curl} ${target_url}/properties
 	@echo ""
 	sleep ${sleep_secs}
 
