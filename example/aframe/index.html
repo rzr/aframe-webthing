@@ -12,21 +12,6 @@
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
     <script type="text/javascript" src="../../src/aframe-webthing.js"></script>
     <script type="text/javascript" src="properties.js"></script>
-    <script>
-      window.onload = function() {
-        // TODO: relocate this elsewhere
-        if (document.location.search) {
-          let searchParams = null;
-          searchParams = (new URL(document.location)).searchParams;
-          if (searchParams) {
-            for (let entry of searchParams.entries()) {
-              localStorage[entry[0]] = entry[1];
-            }
-          }
-          window.location.replace('index.html');
-        }
-      }
-    </script>
   </head>
   <body>
     <a-scene>
