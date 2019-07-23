@@ -23,7 +23,7 @@ AFRAME.registerComponent('properties', {
         this.data[property] = (properties[property] / 100 / .5) + .5 ;
         break;
       default:
-        this.data[property] = properties[property];
+        break;
       }
       this.el.object3D.scale.setScalar(this.data.level);
       this.el.setAttribute('color', this.data.on ? 'green' : 'red');
