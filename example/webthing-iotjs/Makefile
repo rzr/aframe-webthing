@@ -15,7 +15,7 @@ default: help
 project?=aframe-webthing-iotjs-example
 runtime?=node
 webthing_url?=http://${project}.glitch.me
-example_file=iotjs_modules/webthing-iotjs/example/single-thing.js
+example_file?=index.js
 property?=level
 run_args?=
 port?=8888
