@@ -2,6 +2,9 @@
 
 [![GitHub forks](https://img.shields.io/github/forks/rzr/aframe-webthing.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/rzr/aframe-webthing/network/)
 
+[![aframe-webthing](https://image.slidesharecdn.com/aframe-webthing-20190710-190710195750/95/aframewebthing20190710-27-638.jpg)](https://speakerdeck.com/rzr/aframe-webthing-20190710rzr# "aframe-webthing")
+
+
 ## USAGE: ##
 
 ```sh
@@ -23,7 +26,9 @@ x-www-browser http://localhost:8880?verbose=yes&useWs=no
 x-www-browser 'http://rzr.github.io/aframe-webthing?useWs=no&verbose=yes' 
 ```
 
+
 ## RESOURCES: ##
 
 * <http://rzr.github.io/aframe-webthing>
 * <https://purl.org/aframe-webthing>
+* <https://github.com/mozilla-iot/webthing-node/pull/108>
