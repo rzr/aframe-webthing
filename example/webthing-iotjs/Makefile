@@ -13,8 +13,7 @@ default: help
 	@echo "log: $@: $^"
 
 project?=aframe-webthing-iotjs-example
-runtime?=node
-webthing_url?=http://${project}.glitch.me
+runtime?=iotjs
 example_file?=index.js
 property?=level
 run_args?=
@@ -28,7 +27,7 @@ srcs?=${lib_srcs}
 iotjs_modules_dir?=${CURDIR}/iotjs_modules
 
 webthing-iotjs_url?=https://github.com/rzr/webthing-iotjs
-webthing-iotjs_revision?=webthing-iotjs-0.11.2-1
+webthing-iotjs_revision?=webthing-iotjs-0.12.0
 webthing-iotjs_dir?=${iotjs_modules_dir}/webthing-iotjs
 iotjs_modules_dirs+=${webthing-iotjs_dir}
 
@@ -60,8 +59,11 @@ iotjs/start: ${example_file} ${iotjs_modules_dirs}
 iotjs/modules: ${iotjs_modules_dirs}
 	ls $<
 
-${example_file}: ${iotjs_modules_dirs}
+${webthing-iotjs_dir}/%: ${iotjs_modules_dirs}
 	ls $@
+
+${example_file}: ${webthing-iotjs_dir}/example/single-thing.js ${iotjs_modules_dirs}
+	sed 's|brightness|level|g' < $< > $@
 
 iotjs/client:
 	curl -i ${target_url}
@@ -101,6 +103,8 @@ property/%:
 	${curl} ${target_url}/properties/${@F}
 	@echo ""
 	${curl} -X PUT -d '{ "${@F}": ${value} }' ${target_url}/properties/${@F}
+	@echo ""
+	${curl} ${target_url}/properties
 	@echo ""
 	sleep ${sleep_secs}
 
