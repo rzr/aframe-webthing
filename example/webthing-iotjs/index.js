@@ -13,7 +13,7 @@ var Value = webthing.Value;
 var WebThingServer = webthing.WebThingServer;
 
 function makeThing() {
-  var thing = new Thing('My Lamp', ['OnOffSwitch', 'Light'], 'A web connected lamp');
+  var thing = new Thing('urn:dev:ops:my-lamp-1234', 'My Lamp', ['OnOffSwitch', 'Light'], 'A web connected lamp');
   thing.addProperty(new Property(thing, 'on', new Value(true), {
     '@type': 'OnOffProperty',
     title: 'On/Off',
@@ -22,7 +22,7 @@ function makeThing() {
   }));
   thing.addProperty(new Property(thing, 'level', new Value(50), {
     '@type': 'BrightnessProperty',
-    title: 'level',
+    title: 'Brightness',
     type: 'integer',
     description: 'The level of light from 0-100',
     minimum: 0,
