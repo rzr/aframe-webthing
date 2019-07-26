@@ -20,7 +20,7 @@ AFRAME.registerComponent('webthing', {
     useWs: { type: "string", default: 'yes' },
     refresh: {type: "string", default: "1000" },
     verbose: {type: "string", default: "no" },
-    persist: {type: "string", default: "yes" },
+    persist: {type: "string", default: "no" },
     settings: {type: "string", default: ""}
   },
   init: function() {
