@@ -27,6 +27,5 @@
     "url": "https://github.com/rzr/aframe-webthing/issues"
   },
   "homepage": "https://libraries.io/npm/aframe-webthing",
-  "dependencies": {
-  }
+  "dependencies": {}
 }
