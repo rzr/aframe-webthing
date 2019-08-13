@@ -3,6 +3,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/rzr/aframe-webthing.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/rzr/aframe-webthing/network/)
 [![license](https://img.shields.io/badge/license-MPL--2.0-blue.svg)](LICENSE)
 [![NPM](https://img.shields.io/npm/v/aframe-webthing.svg)](https://www.npmjs.com/package/aframe-webthing)
+[![](https://data.jsdelivr.com/v1/package/npm/aframe-webthing/badge)](https://www.jsdelivr.com/package/npm/aframe-webthing)
 [![IRC Channel](https://img.shields.io/badge/chat-on%20freenode-brightgreen.svg)](https://kiwiirc.com/client/irc.freenode.net/#tizen)
 
 ## ABOUT: ##
