@@ -165,6 +165,6 @@ AFRAME.registerComponent('webthing', {
     toggle(this.data.pause === 'no');
   },
   update: function(old) {
-    console.log('controler.update');
+    verbose('controler.update');
   }
 });
