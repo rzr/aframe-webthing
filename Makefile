@@ -15,12 +15,13 @@ default: help
 project?=webthing-aframe
 runtime?=node
 example_file=index.js
-view_url?=http://localhost:8880?verbose=yes&useWs=no
-browser?=x-www-browser
 port?=8880
+view_url?=http://localhost:${port}?verbose=yes&useWs=no
+browser?=x-www-browser
+
 
 %: ${runtime}/%
-	@echo "log: $@: $^"
+	@echo "# log: $@: $^"
 
 
 help:
@@ -34,11 +35,23 @@ LICENSE: /usr/share/common-licenses/MPL-2.0
 node/start: ${example_file} node_modules 
 	PORT=${port} node $<
 
+setup:
+	@echo "# log: $@: $^"
+
+check:
+	@echo "# log: $@: $^"
+
+test:
+	@echo "# log: $@: $^"
+
 node_modules:
 	npm install
 
+modules: ${node_modules}
+	ls $^
+
 start: ${runtime}/start
-	@echo "# $@: $^"
+	@echo "# log: $@: $^"
 
 demo:
 	xterm -e make -C example/webthing-node start &
