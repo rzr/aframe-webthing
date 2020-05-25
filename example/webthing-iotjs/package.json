@@ -1,6 +1,6 @@
 {
   "name": "aframe-webthing-iotjs-example",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Basic minimal webthing",
   "main": "index.js",
   "scripts": {
