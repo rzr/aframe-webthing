@@ -7,7 +7,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/ .
 #}
 
-FROM node:10
+FROM node:12
 LABEL maintainer "Philippe Coval (rzr@users.sf.net)"
 
 ENV project aframe-webthing
