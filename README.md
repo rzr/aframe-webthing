@@ -119,6 +119,8 @@ https://twitter.com/utopiah/status/1154760317546762240#aframe-webthing-0.0.2#
 
 * <http://rzr.github.io/aframe-webthing>
 * <https://purl.org/aframe-webthing>
+* <https://rzr-aframe-webthing.glitch.me/example/aframe/>
+* <https://glitch.com/~rzr-aframe-webthing>
 * <https://purl.org/rzr/presentations>
 * <https://www.npmjs.com/package/twins>
 * <https://fosdem.org/2020/schedule/speaker/philippe_coval/>
